@@ -23,15 +23,15 @@ public class PokerTest {
         int[] cases = new int[7];
         int[] counter = new int[10];
         ArrayList<Integer> list = new ArrayList<>();
-        long seed = 1;
-        
+        long seed = 3;
+
         double start = System.currentTimeMillis();
 
         for (int i = 0; i < genNumbers.length; i++) {
-           
+
             genNumbers[i] = (int) genPseudoRand(seed);
             seed =  genPseudoRand(seed);
-            
+
             // Study the generated numbers
             while(list.isEmpty() == false){
                 list.remove(list.get(list.size() - 1));
@@ -42,7 +42,7 @@ public class PokerTest {
 
             int g = genNumbers[i];
             for (int n = 0; n < 5; n++) {
-                
+
                 int d = g % 10;
                 g /= 10;
                 counter[d]++;
@@ -57,11 +57,11 @@ public class PokerTest {
 
             /**
              * All different case[0]
-             * One Pair case[1] 
+             * One Pair case[1]
              * Two Pairs case[2]
-             * Three of a kind case[3] 
-             * Full House case[4] 
-             * Four of a kind case[5] 
+             * Three of a kind case[3]
+             * Full House case[4]
+             * Four of a kind case[5]
              * Five of a kind case[6]++
              */
             switch (list.size()) {
@@ -90,28 +90,28 @@ public class PokerTest {
                 case 5:
                     cases[0]++;
                     break;
-                
+
             }
         }
-        
+
         double end = System.currentTimeMillis();
 
         System.out.println("Generated Numbers Array : ");
         for (int i = 0; i < genNumbers.length; i++) {
             System.out.print(genNumbers[i] + " ");
         }
-        
+
         System.out.println();
-        
+
         for (int i = 0; i < cases.length; i++){
             System.out.print(cases[i] + " ");
         }
-        
+
         System.out.println();
         System.out.println("The program execution time : " + (end - start));
-        
+
     }
-    
+
     public static long genPseudoRand(long seed){
         //long seed = 1;
         int a = 1664525;
@@ -121,7 +121,7 @@ public class PokerTest {
         String s = "";
         s += seed;
 
-        s = s.substring(0, 5);
+        s = s.substring(1, 6);
         int num = Integer.parseInt(s);
         return num;
     }
